@@ -1,0 +1,30 @@
+<!-- 
+  这个页面是后端渲染出来的，整个页面都是模板字符串
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    iframe {
+      position: absolute;
+      top: 0;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 把一个页面通过 iframe 导入 并设置透明 然后把一些按钮重叠，导致触发 iframe 内的一些事件 -->
+  <iframe src="http://localhost:3000/" frameborder="0"></iframe>
+  <div>
+    <h1>震惊xxx明星惊现重磅新闻</h1>
+    <button style="width:300px;height:50px;">点击查看</button>
+  </div>
+</body>
+
+</html>

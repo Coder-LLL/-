@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <h1>XSS</h1>
+    <div v-html="content"></div>
+    <div>{{ content }}</div>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        // content: '<h2>hello world</h2>'
+        /** 
+         *  1.
+         *  Vue 内部通过 innerHTML，textContent 来给节点设置内容的
+         *  innerHTML，textContent 默认就会对 <> 符号进行转码 所以也会过滤掉 <script> 标签
+         *  所以纯前端对这种script注入的攻击 浏览器已经帮助我们屏蔽了
+         * 
+         */
+        // content: '<script>alert(123)<\/script>'
+
+        /** 
+         *  2.
+         *  通过img等事件触发注入XSS攻击
+         *  例如故意给个错误的src地址，然后直接监听 onerror 事件 注入攻击
+         */
+        content: "<img src='xxx' onerror='alert(123)'><\/img>"
+
+      }
+    })
+  </script>
+</body>
+
+</html>

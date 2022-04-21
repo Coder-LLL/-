@@ -1,0 +1,37 @@
+<!-- 
+  这个页面是后端渲染出来的，整个页面都是模板字符串
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1>{{foo}}</h1>
+  <form action="/" method="get">
+    <div>
+      <label for="">输入内容开始搜索</label>
+      <input name="search" type="text">
+    </div>
+    <div>
+      <button>搜索</button>
+    </div>
+  </form>
+  {{ if search }}
+  <div>
+    <!-- 如果我们在输入框内 输入 <script>alert(123)</script> 则会执行 -->
+    {{@ search }}的搜索结果如下
+    <ur>
+      <li></li>
+    </ur>
+  </div>
+  {{  /if }}
+</body>
+
+</html>
