@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <span>防抖</span>
+  <input type="text" id="input">
+  <span>节流</span>
+  <input type="text" id="input2">
+  <script>
+    /**
+     * 防抖
+     * */
+    function request(val) {
+      console.log("requset: " + val)
+    }
+    // 定义防抖函数
+    function debounce(fn, delay) {
+      let timeout
+
+      console.log(this)
+      return function () {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+          // fn(...arguments)
+          fn.apply(this, arguments)
+        }, delay)
+      }
+    }
+    let inputEl = document.getElementById("input");
+    let debounceInput = debounce(request, 500)
+    inputEl.addEventListener("keyup", function (e) {
+      debounceInput(e.target.value);
+    });
+
+
+
+    /**
+     * 节流
+     * */
+    function request2(val) {
+      console.log("request: " + val);
+    }
+
+    // 定义一个节流函数
+    function throttle(fn, delay) {
+      let timer
+      return function () {
+        if (!timer) {
+          fn.apply(this, arguments)
+          timer = setTimeout(() => {
+            clearTimeout(timer)
+            timer = null
+          }, delay);
+        }
+      }
+    }
+    let inputEl2 = document.getElementById("input2");
+    let throttleInput = throttle(request2, 500)
+    inputEl2.addEventListener("keyup", function (e) {
+      throttleInput(e.target.value);
+    });
+  </script>
+</body>
+
+</html>
